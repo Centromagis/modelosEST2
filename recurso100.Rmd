@@ -1,0 +1,132 @@
+---
+title: <span style="color:#034a94"> **R - Estimación del modelo**</span>
+author: "Modelos Estadísticos para la toma de decisiones"
+output:
+  html_document:
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+library(paqueteMODELOS)
+data("arboles1")
+arboles1$D1 = as.numeric(arboles1$mg=="GENOTIPO_2")
+arboles1$D2 = as.numeric(arboles1$finca=="FINCA_2")
+arboles1$D3 = as.numeric(arboles1$finca=="FINCA_3")
+arboles1$peso = as.numeric(arboles1$peso)
+arboles1$diametro = as.numeric(arboles1$diametro)
+arboles1$altura = as.numeric(arboles1$altura)
+
+
+library(tidyverse)
+library(lmtest) # diagnósticos de modelos lineales
+library(sandwich) # errores estándar robustos
+library(ggeffects) # efectos y predicciones en modelos de regresión
+library(modelsummary) # tablas de regresión
+
+#install.packages("bbmle")
+#install.packages("stats4")
+
+
+```
+
+</br></br>
+
+## <span style="color:#034a94">**Estimación del modelo método MCO**</span>
+
+</br>
+
+Para estimar el modelo por el método de mínimos cuadrados ordinarios se utiliza la función  lm
+
+</br>
+
+<pre>
+lm(formula, data, subset, weights, na.action,
+method = "qr", model = TRUE, x = FALSE, y = FALSE, qr = TRUE,
+singular.ok = TRUE, contrasts = NULL, offset, ...)                      
+</pre>
+
+</br></br>
+
+### <span style="color:#FF7F00"> **Ejemplo**</span>
+
+</br>
+
+Para  la base de datos arboles1 que con tiene las variables
+
+| variable       |   descripción                                                         |
+|:---------------|:---------------------------------------------------------------------|
+| **finca**      | lugar donde se encuentra plantado el árbol |
+| **mg**         | genotipo del árbol  |
+| **peso**       | peso del árbol  |
+| **diametro**   | diametro del árbol |
+| **altura**     | altura del árbol  1
+| **D1**         | variable binaria que toma valor de 0 para GENOTIPO_1 y un valor de 1 para GENOTIP_2 |
+| **D2**         | variable binaria que toma valor de 1 para FINCA_2 y 0 en otro caso     |
+| **D3**         | variable binaria que toma valor de 1 para FINCA_3 y cero en otro caso  |
+
+
+
+</br></br>
+
+```{r}
+library(paqueteMODELOS)
+data("arboles1")
+arboles1$D1 = as.numeric(arboles1$mg=="GENOTIPO_2")
+arboles1$D2 = as.numeric(arboles1$finca=="FINCA_2")
+arboles1$D3 = as.numeric(arboles1$finca=="FINCA_3")
+arboles1$peso = as.numeric(arboles1$peso)
+arboles1$diametro = as.numeric(arboles1$diametro)
+arboles1$altura = as.numeric(arboles1$altura)
+
+
+modelo1 <- lm(peso ~ diametro + altura + D2 + D3, data = arboles1)
+summary(modelo1)
+```
+
+</br></br>
+
+## <span style="color:#034a94">**Estimación paso a paso  o Steppwise**</span>
+
+
+Me diante esta metodología se estima un modelo de manera gradual, partiendo de un modelo con solo el intercepto y en cada paso se incorpora una variable hasta cumplir con el criterio de parada.
+
+</br>
+
+```{r}
+# se define el modelo  ingenuo  y= b0
+modelo_b0<- lm(peso ~ 1, data=arboles1)
+
+#define model with all predictors
+modelo_all <- lm(peso ~ diametro + altura + D1 +D2 +D3, data=arboles1)
+
+# Se aplica el proceso forward stepwise regression
+forward <- step(modelo_b0, direction='forward', scope=formula(modelo_all), trace=0)
+
+# Visualización de los resultados 
+forward$anova
+
+# resultado final del modelo
+summary(forward)
+```
+
+
+</br></br>
+
+
+<!-- ## <span style="color:#034a94">**Estimación por el método de Máxima Verosimilitud**</span> -->
+
+<!-- </br> -->
+
+<!-- ```{r} -->
+<!-- library(stats4) # para la función mle -->
+<!-- library(bbmle) # para la función mle2 -->
+
+
+<!-- ``` -->
+
+
+

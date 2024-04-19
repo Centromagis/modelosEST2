@@ -1,0 +1,62 @@
+---
+title: <span style="color:#034a94"> **R - Mapa**</span>
+author: "Modelos Estadísticos para la toma de decisiones"
+output:
+  html_document:
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+library(paqueteMODELOS)
+data("arboles1")
+arboles1$D1 = as.numeric(arboles1$mg=="GENOTIPO_2")
+arboles1$D2 = as.numeric(arboles1$finca=="FINCA_2")
+arboles1$D3 = as.numeric(arboles1$finca=="FINCA_3")
+arboles1$peso = as.numeric(arboles1$peso)
+arboles1$diametro = as.numeric(arboles1$diametro)
+arboles1$altura = as.numeric(arboles1$altura)
+
+
+# library(tidyverse)
+# library(lmtest) # diagnosticos de modelos lineales
+# library(sandwich) # errores estandar robustos
+# library(ggeffects) # efectos y predicciones en modelos de regresion
+# library(modelsummary) # tablas de regresion
+
+```
+
+
+</br></br>
+
+El siguiente código permite la visualización de puntos en el mapa de la ciudad de Cali, teniendo como base  las coordenadas de la vivienda y el paquete de R `leaflet`
+
+
+```{r}
+# install.packages("leaflet")
+library(leaflet)
+
+oferta <- data.frame(
+  lat = c(3.43382, 3.43369, 3.42566, 3.435, 3.45891),
+  long = c(-76.51168, -76.51237, -76.51737, -76.54, -76.5135)
+)
+
+# Crea un mapa
+map <- leaflet(oferta) %>%
+  addTiles() %>%
+  addMarkers(
+    lng = ~long,
+    lat = ~lat,
+    popup = ~as.character(lat) # Puedes personalizar el contenido del popup aquí
+  )
+
+map # Muestra el mapa
+
+
+```
+
+
+

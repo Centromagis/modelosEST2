@@ -1,0 +1,183 @@
+---
+title: <span style="color:#034a94"> **Inferencia**</span>
+author: "Modelos Estadísticos para la toma de decisiones"
+output:
+  html_document:
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+# colores
+c1="#FF7F00"
+c2="#=EB0C6"
+c3="#034A94"
+c4="#686868"
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+# knitr::include_graphics("img/puntos1.png")
+```
+
+
+La inferencia sobre los parámetros del MRLM  ($\beta_{i}$), permite obtener estimaciones teniendo encuenta que los datos utilizados corresponden a una muestra y que por lo tanto contienen un grado de incertidumbre o error. Además permite concluir sobre las relaciones existentes entre las variables independientes ($X_i$) y la variable dependiente o respuesta ($Y_i$). 
+
+<br/> <br/>
+
+
+# <span style="color:#034a94">**Sobre los parámetros del modelo**</span>
+
+</br>
+
+Se puede demostrar que bajo los supuestos del modelo de regresión, se cumple que:
+
+$$
+{T_j} = {\frac{\widehat\beta_j - \beta_j}{\text{se}\left(\widehat\beta_j\right)} \sim t_{n - p}}, \hspace{1cm} j = 0, 1, \ldots, k
+$$
+
+con :
+
+* $\text{se}\left(\widehat\beta_j\right) = \sqrt{\widehat{V}\left(\widehat\beta_j\right)}$ y 
+
+* ${t_{n - p}}$, variable aleatoria $t$-Student con $(n-p)$ grados de libertad.
+
+</br>
+
+Basados en este resultado se pueden construir pruebas de hipótesis e intervalos de confianza para los parámetros del modelo de RLM como se describe a continuación.
+
+</br></br>
+
+## <span style="color:#034a94">**Pruebas de hipótesis sobre los parámetros**</span>
+
+</br>
+
+<div class="content-box-blue">
+
+Se tienen en total $(k + 1)$ pruebas de hipótesis sobre los coeficientes individuales del modelo de **RLM**. Veamos el procedimiento para el $j$-ésimo parámetro ($j = 0, 1, \ldots, k$). Se quiere probar:
+
+</br>
+
+
+| Pruebas                                   | Estadístico de prueba                                |
+|:-----------------------------------------:|:----------------------------------------------------:|
+|$\begin{array}{l} H_0: \beta_j = B_{j,0}\\ H_1: \beta_j \ne B_{j,0} \end{array}\ \text{ con }\ B_{j,0} \in \mathbb{R}$     | $T_{j,0} = \dfrac{\widehat\beta_j - B_{j,0}}{\text{se}\left(\widehat\beta_j\right)} \overset{\text{bajo }H_0}{\sim} t_{v: n - p}$ |
+
+</br>
+
+Un caso particular de las pruebas de hipótesis anteriores son las conocidas **pruebas de significancia de los parámetros individuales**, donde el procedimiento de prueba es idéntico al anteriormente mostrado haciendo $B_{j,0} = 0$. Acá, las hipótesis son:
+
+</br>
+
+| Pruebas                                   | Estadístico de prueba                                |
+|:-----------------------------------------:|:----------------------------------------------------:|
+|$\begin{array}{l} H_0: \beta_j = 0\\ H_1: \beta_j \ne 0 \end{array}$  | $T_{j,0} = \dfrac{\widehat\beta_j}{\text{se}\left(\widehat\beta_j\right)} \overset{\text{bajo }H_0}{\sim} t_{n - p}$ |
+
+</div>
+
+
+<div class="content-box-gray">
+### <span style="color:#686868"> **Nota**</span>
+
+En todos los casos un valor-p bajo apuntará hacia el rechazo de $H_0$ y la aceptación de $H_1$ como verdad, en caso contrario no se rechaza $H_0$, se asume que Ho es verdadera.
+</div>
+
+</br></br></br>
+
+## <span style="color:#034a94">**Intervalos de confianza para los parámetros**</span>
+
+</br>
+
+De nuevo con base en el resultado : $T_j  \sim t_{n - p}, \hspace{1cm} j = 0, 1, \ldots, k$ un intervalo de confianza (IC) del ${(1 - \alpha)\%}$ para el $j$-ésimo parámetro ${\beta_j}$ ($j = 0, 1, \ldots, k$), es:
+
+</br>
+
+<div class="content-box-blue">
+$$
+\widehat\beta_j \pm t_{\alpha/2, n - p}\, \text{se}\left(\widehat\beta_j\right)
+$$
+</div>
+
+</br>
+
+donde 
+
+* ${t_{\alpha/2, n - p}}$ es el percentil $1 - \alpha/2$ de la distribución $t$-Student con $(n - p)$ grados de libertad.
+
+</br></br></br>
+
+
+## <span style="color:#034a94">**Interpretación de los parámetros**</span>
+
+
+
+$$
+Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \cdots+ \beta_kX_{ik} + \varepsilon_i, \quad i = 1, 2, \ldots, n.
+$$ 
+
+En un modelo de regresión lineal las variables tanto la dependiente ($Y$) como las independientes ($X_1,X_2, \dots X_k$) pueden tener diferentes escalas de medición. Dependiendo de estas escalas se interpretan los coeficientes o pendientes.
+
+
+Algunos de los casos más frecuentes son:
+
+</br></br>
+
+<div class="content-box-blue">
+
+### **Modelo lin-lin**
+
+Tanto la variable dependiente como la independiente están en su escala original
+
+$$
+Y_i = \beta_0 + \beta_1X_{i1} + \cdots  \cdots 
+$$ 
+
+En este caso $\beta_{1}$, se interpreta como : Un cambio unitario de $X_1$, genera un cambio de $\beta_{1}$ unidades en $Y$.  
+</div>
+
+</br></br>
+
+<div class="content-box-blue">
+### **Modelo log-lin**
+
+$$
+log{(Y_i)} = \beta_0 + \beta_1X_{i1} + \cdots  \cdots 
+$$ 
+
+En este caso $\beta_{1}$, se interpreta como : Un cambio unitario en $X_1$, genera un cambio porcentual del $\beta_{1} \times 100 \%$ en $Y$  
+</div>
+
+</br></br>
+
+<div class="content-box-blue">
+### **Modelo lin-log**
+
+
+
+$$
+Y_i= \beta_0 + \beta_1 \log{(X_{i1})} +\cdots  \cdots 
+$$
+
+La pendiente $\beta_{1}$ se interpreta como : Una variación del 1% en  $X_1$, genera una variación de  $\dfrac{\beta_{1}}{100}$ unidades en $Y$.
+
+</div>
+
+</br></br>
+
+<div class="content-box-blue">
+
+### **Modelo log-log**
+
+
+$$
+log{(Y_i)} = \beta_0 + \beta_1 \log{(X_{i1})} +  \cdots  \cdots 
+$$ 
+
+
+La pendiente $\beta_{1}$ se interpreta como : Un cambio de un 1% en $X_1$, genera un cambio del $\beta_{1}$ por ciento en $Y$
+</div>
+
+</br></br></br></br>

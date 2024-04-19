@@ -1,0 +1,64 @@
+name: "Modelos"
+output_dir: "docs"
+navbar:
+  title: "Modelos Estadísticos para la toma de decisiones"
+  left:
+    - text: "Conceptos"
+      menu:
+        - text: "Modelo de Regresión Lineal Múltiple"
+          href: recurso005.html      
+        - text: "Correlación"
+          href: recurso010.html
+        - text: "Algebra Lineal"
+          href: recurso015.html         
+        - text: "Notación matricial de modelo"
+          href: recurso020.html            
+    - text: "Estimación"
+      menu:
+        - text: "Mínimos Cuadrados Ordinarios"
+          href: recurso030.html
+        - text: "Propiedades de los estimadores"
+          href: recurso035.html         
+        - text: "Validación de los supuestos"
+          href: recurso050.html      
+    - text: "Inferencia"
+      menu:
+        - text: "Inferencia sobre los parámetros"    
+          href: recurso040.html
+        - text: "Inferencia sobre subconjunto de parámetros"    
+          href: recurso042.html          
+        - text: "Pronósticos"    
+          href: recurso045.html
+    - text: "Ajuste del modelo"
+      menu:
+        - text: "Indicadores de ajuste"
+          href: recurso055.html         
+        - text: "Validación cruzada"
+          href: recurso060.html         
+    - text: "Variables cat."
+      menu:
+        - text: "En el modelo de RLM"
+          href: recurso061.html
+    - text: "Multicolinealidad"
+      menu:
+        - text: "Multicolinealidad"  
+          href: recurso080.html
+        - text: "Causas / Efectos"  
+          href: recurso081.html          
+        - text: "Diagnóstico"  
+          href: recurso082.html   
+        - text: "Alternativas"  
+          href: recurso083.html           
+    - text: "Código R "
+      menu:
+        - text: "Análisis previo"
+          href: recurso099.html         
+        - text: "Estimación MCO"
+          href: recurso100.html   
+        - text: "Validación cruzada"
+          href: recurso120.html 
+        - text: "Mapa"
+          href: recurso140.html  
+  output:
+  html_document:
+    css: style.css

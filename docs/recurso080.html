@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Modelos Estadísticos para la toma de decisiones" />
+
+
+<title> Multicolinealidad</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Modelos Estadísticos para la toma de decisiones</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Conceptos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso005.html">Modelo de Regresión Lineal Múltiple</a>
+    </li>
+    <li>
+      <a href="recurso010.html">Correlación</a>
+    </li>
+    <li>
+      <a href="recurso015.html">Algebra Lineal</a>
+    </li>
+    <li>
+      <a href="recurso020.html">Notación matricial de modelo</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Estimación
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso030.html">Mínimos Cuadrados Ordinarios</a>
+    </li>
+    <li>
+      <a href="recurso035.html">Propiedades de los estimadores</a>
+    </li>
+    <li>
+      <a href="recurso050.html">Validación de los supuestos</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Inferencia
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso040.html">Inferencia sobre los parámetros</a>
+    </li>
+    <li>
+      <a href="recurso042.html">Inferencia sobre subconjunto de parámetros</a>
+    </li>
+    <li>
+      <a href="recurso045.html">Pronósticos</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Ajuste del modelo
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso055.html">Indicadores de ajuste</a>
+    </li>
+    <li>
+      <a href="recurso060.html">Validación cruzada</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Variables cat.
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso061.html">En el modelo de RLM</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Multicolinealidad
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso080.html">Multicolinealidad</a>
+    </li>
+    <li>
+      <a href="recurso081.html">Causas / Efectos</a>
+    </li>
+    <li>
+      <a href="recurso082.html">Diagnóstico</a>
+    </li>
+    <li>
+      <a href="recurso083.html">Alternativas</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Código R 
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso099.html">Análisis previo</a>
+    </li>
+    <li>
+      <a href="recurso100.html">Estimación MCO</a>
+    </li>
+    <li>
+      <a href="recurso120.html">Validación cruzada</a>
+    </li>
+    <li>
+      <a href="recurso140.html">Mapa</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore"><span style="color:#034a94">
+<strong>Multicolinealidad</strong></span></h1>
+<h4 class="author">Modelos Estadísticos para la toma de decisiones</h4>
+
+</div>
+
+
+<p></br></p>
+<p>La multicolinealidad, un problema común en el análisis de regresión
+lineal múltiple que plantea un desafío fundamental al intentar
+comprender las relaciones entre múltiples variables predictoras y una
+variable de respuesta.</p>
+<p></br></p>
+<p>En este contexto, las variables predictoras a menudo están
+interrelacionadas entre sí (no son independientes una de otroas), lo que
+puede generar dificultades al intentar determinar la contribución
+individual de cada variable en la explicación de la variable de
+respuesta.</p>
+<p></br></p>
+<p>A medida que la correlación entre las variables predictoras se
+intensifica, la precisión de las estimaciones de los coeficientes de
+regresión puede deteriorarse significativamente, lo que hace que la
+interpretación de los resultados sea más complicada y potencialmente
+sesgada. Esta introducción explorará en detalle la naturaleza de la
+multicolinealidad, sus posibles implicaciones y cómo abordar eficazmente
+este desafío para garantizar la validez y fiabilidad de los análisis de
+regresión lineal múltiple.</p>
+<p></br></p>
+<p>Es posible que al construir un modelo de regresión para predecir el
+<strong>precio de una vivienda</strong> en función de variables como el
+área de la vivienda en metros cuadrados, el número de habitaciones y la
+ubicación. Si incluimos tanto el área metros cuadrados como el número de
+habitaciones como predictoras, es posible que estas dos variables estén
+altamente correlacionadas ( a más habitaciones más área) . Esto se debe
+a que, en muchas ocasiones, las viviendas más grandes tienden a tener
+más habitaciones. Esta correlación alta puede llevar a la
+multicolinealidad y dificultar la interpretación precisa de cómo cada
+variable afecta al precio.</p>
+<p></br></p>
+<p>Tambien es posible que si estamos analizando el <strong>rendimiento
+académico</strong> de los estudiantes utilizando variables como horas de
+estudio semanales, calificaciones en exámenes anteriores y participación
+en actividades extracurriculares. Si las horas de estudio y las
+calificaciones en exámenes anteriores están fuertemente correlacionadas,
+la multicolinealidad podría surgir. Esto podría dificultar la
+identificación de cuál de estas dos variables tiene un impacto más
+independiente en el rendimiento estudiantil.</p>
+<p></br></p>
+<p>En ambos ejemplos, la multicolinealidad puede hacer que los
+coeficientes de regresión sean difíciles de interpretar. Además, puede
+hacer que los intervalos de confianza sean más amplios y que las pruebas
+de significancia sean menos confiables. Para abordar este problema, es
+importante realizar análisis de correlación entre las variables
+predictoras y, si es necesario, considerar técnicas como reducción de
+dimensionalidad (PCA) o eliminar una de las variables altamente
+correlacionadas. En última instancia, el objetivo es asegurarse de que
+las estimaciones del modelo sean válidas y no se vean distorsionadas por
+la multicolinealidad.</p>
+<p></br></p>
+<p>Existen dos tipos principales de multicolinealidad: la
+multicolinealidad exacta y la multicolinealidad aproximada. Estos dos
+tipos se diferencian en cómo se manifiestan y en sus implicaciones para
+el análisis.</p>
+<p></br></br></p>
+<div id="multicolinealidad-exacta" class="section level3">
+<h3><span style="color:#FF7F00"><strong>Multicolinealidad
+Exacta:</strong></span></h3>
+<p></br></p>
+<p>Se presenta cuando hay una relación lineal perfecta entre dos o más
+variables predictoras. En otras palabras, una variable predictora puede
+ser expresada como una combinación lineal exacta de otras variables. Por
+ejemplo, si en un modelo tenemos dos variables predictoras <span
+class="math inline">\(X_1\)</span> y <span
+class="math inline">\(X_2\)</span>, y <span
+class="math inline">\(X_2\)</span> se puede expresar como <span
+class="math inline">\(X_2 = 2 X_1\)</span>, entonces hay
+multicolinealidad exacta entre <span class="math inline">\(X_1\)</span>
+y <span class="math inline">\(X_2\)</span>. En este caso, en el sistema
+matricial:</p>
+<p><span class="math display">\[Y = X \beta + \varepsilon\]</span> La
+matriz de diseño <span class="math inline">\(X\)</span> no es de rango
+completo, lo causa problemas en los cálculos de los coeficientes, pues
+el sistema no tiene solución.</p>
+<p></br></br></p>
+</div>
+<div id="multicolinealidad-aproximada" class="section level3">
+<h3><span style="color:#FF7F00"><strong>Multicolinealidad
+Aproximada:</strong></span></h3>
+<p></br></p>
+<p>Es más común en la práctica y se refiere a una alta correlación entre
+dos o más variables predictoras, aunque no haya una relación lineal
+perfecta entre ellas. En este caso, las variables predictoras están
+estrechamente relacionadas, lo que puede dificultar la interpretación
+individual de sus efectos en la variable de respuesta. La
+multicolinealidad aproximada puede resultar en coeficientes estimados
+con alta variabilidad y valores menos confiables, lo que afecta la
+interpretación y la calidad del modelo.</p>
+<!-- Ambos tipos de multicolinealidad pueden impactar negativamente la interpretación y la eficacia del modelo de regresión lineal múltiple. Identificar y abordar la multicolinealidad es esencial para garantizar resultados confiables y una comprensión precisa de las relaciones entre las variables predictoras y la variable de respuesta. Las técnicas de detección y solución de la multicolinealidad incluyen el análisis de correlación, el uso de factores de inflación de la varianza (VIF), la eliminación de variables redundantes o la aplicación de técnicas avanzadas de selección de características. -->
+<!-- ## <span style="color:#034a94"> **Comparación de efectos parciales de las variables predictoras**</span> -->
+<!-- </br> -->
+<!-- Considere el modelo de RLM: -->
+<!-- </br> -->
+<!-- <div class="content-box-blue"> -->
+<!-- $$Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \cdots + \beta_kX_{ik} + \ \varepsilon_i,\text{ con }\ \varepsilon_i \overset{\text{i.i.d}}{\sim} N\left(0, \sigma^2\right).$$ -->
+<!-- </div> -->
+<!-- </br> -->
+<!-- 1. Si las variables predictoras no están en una misma escala de medida, no podemos determinar cual tiene mayor o menor efecto parcial sobre la respuesta promedio, en presencia de las demás, esto es, la magnitud de $\beta_j$ refleja las unidades de la variable $X_j$. -->
+<!-- </br> -->
+<!-- 2. Para hacer comparaciones en forma directa de los coeficientes de regresión se recurre al uso de variables escaladas, tanto en la respuesta como en las predictoras. -->
+<!-- </br> -->
+<!-- **Escalamiento de longitud unitaria:** cada variable es escalada restando su media muestral y dividiendo esta diferencia por la raíz cuadrada de la suma de cuadrados corregida de cada variable, es decir, -->
+<!-- </br> -->
+<!-- $$\begin{aligned} -->
+<!-- &Y_i^* = \frac{Y_i - \bar{Y}}{\sqrt{\sum\limits_{h = 1}^n \left(Y_h - \bar{Y}\right)^2}}, \quad X_{ij}^* = \frac{X_{ij} - \bar{X}_j}{\sqrt{\sum\limits_{h = 1}^n \left(X_{hj} - \bar{X}_j\right)^2}},\\[0.2cm] -->
+<!-- &\\ -->
+<!-- &\text{con } \left\{\begin{array}{c} -->
+<!-- i = 1, 2, \ldots, n\\ -->
+<!-- j = 1, 2, \ldots, k -->
+<!-- \end{array}\right. -->
+<!-- \end{aligned}$$ -->
+<!-- </br> -->
+<!-- Luego, se ajusta el modelo de RLM sin intercepto -->
+<!-- </br> -->
+<!-- <div class="content-box-blue"> -->
+<!-- $$Y_i^* = \beta_1^*X_{i1}^* + \beta_2^*X_{i2}^* + \cdots + \beta_k^*X_{ik}^* + \varepsilon_i,\hspace{.5cm}\text{con } \hspace{.5cm}\varepsilon_i \overset{\text{i.i.d}}{\sim} N\left(0, \sigma^2\right)$$ -->
+<!-- </div> -->
+<!-- </br> -->
+<!-- Los coeficientes $\beta_j^*$ son llamados *coeficientes de regresión estandarizados*, y estos pueden ser comparados directamente teniendo en cuenta que siguen siendo coeficientes de regresión parcial, es decir, $\beta_j^*$ mide el efecto de $X_j^*$ dado que las demás variables predictoras están en el modelo. -->
+<!-- </br> -->
+<!-- Además, los $\beta_j^*$ pueden servir para determinar la importancia relativa de $X_j^*$ en presencia de las demás variables, en la muestra o conjunto de datos particular considerado para el ajuste. -->
+<!-- </br></br> -->
+<!-- ## <span style="color:#034a94"> **Multicolinealidad**</span> -->
+<!-- </br> -->
+<!-- Multicolinealidad es la existencia de dependencia casi lineal entre variables predictoras en el modelo de RLM. -->
+<!-- Si existiera dependencia lineal exacta entre dos o más variables predictoras, la matriz  -->
+<!-- $\boldsymbol{X}'\boldsymbol{X}$ sería una matriz singular y por tanto **no podríamos hallar los estimadores de mínimos cuadrados!**. -->
+<!-- ```{r, comment = NA, include = F} -->
+<!-- #dt <- read.table('trabajos/RLM/bases/Equipo60.txt', h = T)[, -(4:6)] -->
+<!-- # dt <- read.table('Trabajos/01/Bases_de_datos/Equipo50.txt', h = T)[, -(4:5)] -->
+<!-- # dt$X3 <- 2*dt$X1 - dt$X2 -->
+<!-- # summary(lm(Y ~ X1 + X2 + X3, data = dt)) -->
+<!-- ``` -->
+<!-- </br></br> -->
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
