@@ -170,7 +170,7 @@ grid.arrange(p0,p1,p2, ncol = 3, nrow=2,top = "Bootstrap distribution de los coe
 
 </br></br>  
 
-Igual procedimiento se puede realiar con la función `boot`
+Igual procedimiento se puede realizar con la función `boot`
 
 </br>
 

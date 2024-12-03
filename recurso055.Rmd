@@ -31,7 +31,7 @@ Dentro de los indicadores más utilizado en la comparación de modelos están:
 
 ### <span style="color:#034a94">**$R^2$**</span> 
 
-Coeficiente de determinación : mide que tanto se ajusta un modelo de regresión a los datos, es decir mide la proporción del total de la variación de $Y$ que es representada por la variación de las variables regresoras ($X_1$, $X_2$, $\dots$, $X_k$) . Toma valor de cero cuando la regresión es una linea horizontal y el modelo está formado solo por el intercepto $\beta_0$. Toma el valor de 1 cuando todas las variables predictoras y la variable dependientes están en el mismo plano (una linea recta en el caso del MRLS). 
+Coeficiente de determinación : mide que tanto se ajusta un modelo de regresión a los datos, es decir mide la proporción del total de la variación de $Y$ que es representada por la variación de las variables regresoras ($X_1$, $X_2$, $\dots$, $X_k$). Toma valor de cero cuando la regresión es una linea horizontal y el modelo está formado solo por el intercepto $\beta_0$. Toma el valor de 1 cuando todas las variables predictoras y la variable dependientes están en el mismo plano (una linea recta en el caso del MRLS). 
 
 </br></br>
 
@@ -65,7 +65,7 @@ Al comparar modelos, se prefiere al modelo con valor BIC más bajo.
 ### <span style="color:#686868">**Nota**</span>
 
 
-Este criterio al igual que ACI  utilizan solo cuando la variable dependiente $Y$ es la misma en todos los modelos comparados
+Este criterio al igual que AIC  utilizan solo cuando la variable dependiente $Y$ es la misma en todos los modelos comparados
 
 </div>
 
@@ -84,7 +84,7 @@ Este criterio al igual que ACI  utilizan solo cuando la variable dependiente $Y$
 
 ### <span style="color:#034a94">**F**</span>
 
-Estadístico F, construido a partir de la descomposición de la varianza de la variable dependiente $Y$ en la ANOVA, valida la existencia de por lo menos una variable independiente significativa. El valor de $F$ está asociado con el valor de $R^2$ del modelo, luego valores mas altos constituye un mayor ajuste del modelo a los datos
+Estadístico F, construido a partir de la descomposición de la varianza de la variable dependiente $Y$ en la ANOVA, valida la existencia de por lo menos una variable independiente significativa. El valor de $F$ está asociado con el valor de $R^2$ del modelo, luego valores mas altos constituye un mayor ajuste del modelo a los datos.
 
 
 
@@ -93,7 +93,7 @@ Estadístico F, construido a partir de la descomposición de la varianza de la v
 
 ### <span style="color:#034a94">**RMSE**</span>
 
-Raiz del error cuadrático medio, compara las estimaciones obtenidas contra los valores realies de la variable $Y$, permitiendo valorar el ajuste del modelo
+Raíz del error cuadrático medio, compara las estimaciones obtenidas contra los valores reales de la variable $Y$, permitiendo valorar el ajuste del modelo
 
 $$RMSE = \sqrt{\dfrac{\sum_{i=1}^{n}(_i-\widehat{y}_1)^{2}}{n}}$$
 
@@ -163,7 +163,7 @@ $$
 
 </br>
 
-Para llevar a cabo esta prueba, se necesitan replicaciones de la respuesta en las combinaciones de niveles de las variables predictoras. El procedimiento es el mismo que se estudió en RLS y se basa en la descompocisión de la SSE
+Para llevar a cabo esta prueba, se necesitan replicaciones de la respuesta en las combinaciones de niveles de las variables predictoras. El procedimiento es el mismo que se estudió en RLS y se basa en la descomposición de la SSE
 
 </br>
 

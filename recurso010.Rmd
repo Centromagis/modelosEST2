@@ -19,13 +19,13 @@ data("creditos")
 
 # <span style="color:#034a94">**Correlación**</span>
 
-La correlación entre dos variables es un concepto fundamental en ciencia de datos, pues permite medir el grado de asociación que entre un par de variables que permite la identificación de patrones, tendencias y asociaciones en conjunto de datos. Permite identifica las relaciones a traves de los cambios que se producen o no sobre una variables cuando otra cambia. 
+La correlación entre dos variables es un concepto fundamental en ciencia de datos, pues permite medir el grado de asociación que entre un par de variables que permite la identificación de patrones, tendencias y asociaciones en conjunto de datos. Permite identifica las relaciones a través de los cambios que se producen o no sobre una variables cuando otra cambia. 
 
 La magnitud de este indicador es numérico y dependiendo las características de las variables (tipo y escala de medición) son utilizados diversos coeficientes como son:
 
 * **Coeficiente de Correlación de Pearson** : Mide la relación lineal entre dos variables continuas. Varía entre -1 y 1, con 0 indicando una correlación nula.
 
-* **Coeficiente de Correlación de Spearman**: o correlación de rango de Spearman, se utiliza para medir la relación entre dos variables en escalas de intervalo, principalmente producidas por la cuantificación de un cuestionario que mide una caracteristica cualitativa a traves de la suma de puntuaciones obtenidas de las respuestas dadas. Utilizan los rangos de los valores para calcular la correlación.
+* **Coeficiente de Correlación de Spearman**: o correlación de rango de Spearman, se utiliza para medir la relación entre dos variables en escalas de intervalo, principalmente producidas por la cuantificación de un cuestionario que mide una característica cualitativa a través de la suma de puntuaciones obtenidas de las respuestas dadas. Utilizan los rangos de los valores para calcular la correlación.
 
 * **Coeficiente de Correlación de Kendall**: es similar al coeficiente de Spearman, mide la concordancia entre las clasificaciones de dos variables, independientemente del valor numérico absoluto.
 
@@ -67,7 +67,7 @@ Es útil también acompañar este análisis gráfico con la matriz de correlacio
 
 </br>
 
-En la siguiente figura se presentan algunas matrices de gráficos de dispersión para un conjunto de datos sobre tres variables y su prelación con la variable dependiente.
+En la siguiente figura se presentan algunas matrices de gráficos de dispersión para un conjunto de datos sobre tres variables y su relación con la variable dependiente.
 
 </br>
 
@@ -82,7 +82,7 @@ La base ausentismo  contenida en paqueteMOD contiene las variables
 * **sala**   : salario del empleado
 
 
-El diagrama de dispersión permite visualizar la relación lineal que puede existir entre dos variables numéticas, para ello  se construye la siguiente matriz de diagramas.
+El diagrama de dispersión permite visualizar la relación lineal que puede existir entre dos variables numéricas, para ello  se construye la siguiente matriz de diagramas.
 
 </br></br>
 

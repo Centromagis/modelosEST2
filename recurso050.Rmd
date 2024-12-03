@@ -36,7 +36,7 @@ $$\widehat{\varepsilon_i} = e_i = (y_i-\widehat{y_i}) ,\hspace{1cm} i=1, \ldots,
 
 </br>
 
-çObserve que, la magnitud de los residuales $e_i$ depende de la escala de medida de la respuesta $Y$, lo cual no permite determinar cuando un residual es 'grande'. Para resolver este problema en lugar de usar los residuales crudos definidos arriba, se recomienda utilizar residuales escalados que transforman a los anteriores para tener media cero y varianza unitaria.
+Observe que, la magnitud de los residuales $e_i$ depende de la escala de medida de la respuesta $Y$, lo cual no permite determinar cuando un residual es 'grande'. Para resolver este problema en lugar de usar los residuales crudos definidos arriba, se recomienda utilizar residuales escalados que transforman a los anteriores para tener media cero y varianza unitaria.
 
 </br></br>
 

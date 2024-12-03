@@ -22,7 +22,7 @@ c4="#686868"
 
 </br></br>
 
-Es importante tener un lenguaje simple pero potente para presentar y desarrollar los temas relacionados con MRLM, este lenguaje lo suministra el **álgebra lineal**, partiendo de una base de datos (matriz de datos) se conforman un sistema de $n$ ecuaciones con $k$ incognitas que se presentan a continuación :
+Es importante tener un lenguaje simple pero potente para presentar y desarrollar los temas relacionados con MRLM, este lenguaje lo suministra el **álgebra lineal**, partiendo de una base de datos (matriz de datos) se conforman un sistema de $n$ ecuaciones con $k$ incógnitas que se presentan a continuación :
 
 
 \begin{align*}

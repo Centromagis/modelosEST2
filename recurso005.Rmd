@@ -16,7 +16,7 @@ data("creditos")
 
 </br></br>
 
-El **modelo de regresión lineal** es una técnica fundamental en el campo de la ciencia de datos que permite el modelado y análisis relaciones complejas entre múltiples variables. Cuando el o está conformado por una variable dependiente ($Y$) y una variable independiente ($X$) se denomina **modelo de regresión lineal simple** (MRLS), a diferencia cuando el número de variables independientes esta conformado por mas de dos ($X_1, X_2, \dots X_p$) se le denomina **modelo de regesión lineal múltiple** (MRLM).
+El **modelo de regresión lineal** es una técnica fundamental en el campo de la ciencia de datos que permite el modelado y análisis relaciones complejas entre múltiples variables. Cuando el o está conformado por una variable dependiente ($Y$) y una variable independiente ($X$) se denomina **modelo de regresión lineal simple** (MRLS), a diferencia cuando el número de variables independientes esta conformado por mas de dos ($X_1, X_2, \dots X_p$) se le denomina **modelo de regresión lineal múltiple** (MRLM).
 
 <br/>
 
@@ -73,7 +73,7 @@ Donde:
 
 </br>
 
-* $\varepsilon_i \overset{\text{iid}}{\sim} N\left(0,\sigma ^2 \right), \quad i = 1, 2, \ldots, n$, los errores identica e independientemente distribuidos normal con media cero y varianza constante.
+* $\varepsilon_i \overset{\text{iid}}{\sim} N\left(0,\sigma ^2 \right), \quad i = 1, 2, \ldots, n$, los errores idéntica e independientemente distribuidos normal con media cero y varianza constante.
 
 
 

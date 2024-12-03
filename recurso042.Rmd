@@ -300,8 +300,8 @@ Para probar la hipótesis se debe definir una **suma de cuadrados debida a la hi
 $$\text{SSH} = \text{SSE}(\text{RM}) - \text{SSE}(\text{FM}) = \text{SSR}(\text{FM}) - \text{SSR}(\text{RM})$$
 donde :
 
-* $\text{SSE}(\text{RM})$ : suma de cuadrado de los errores del modelo restringido
-* $\text{SSE}(\text{FM})$ ; suma de cuadrado de los errores del modelo completo
+* $\text{SSE}(\text{RM})$ : suma de cuadrados de los errores del modelo restringido
+* $\text{SSE}(\text{FM})$ ; suma de cuadrados de los errores del modelo completo
 
 </div>
 

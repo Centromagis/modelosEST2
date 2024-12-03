@@ -14,7 +14,7 @@
 
 <title>Variables categóricas en el modelo de regresión lineal</title>
 
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -405,12 +405,12 @@ regresión lineal</strong></span></h1>
 <p></br></br></p>
 <p>Cuando se desea incluir variables categóricas al modelo de regresión
 lineal múltiple es necesario crear variables conocidas como ficticias,
-llamadas tambien binarias o dicotómicas. Estas variables se redefinen a
-aprtir de las categorías de la variable cualitativa a ser incluida en el
+llamadas también binarias o dicotómicas. Estas variables se re-definen a
+partir de las categorías de la variable cualitativa a ser incluida en el
 modelo y solo puede tomar dos valores : 0 ó 1.</p>
 <p>En el caso de una variable categórica con <span
 class="math inline">\(k\)</span> categorías, es necesaria la
-construcción de <span class="math inline">\((k-1\)</span> variables
+construcción de <span class="math inline">\((k-1)\)</span> variables
 binarias</p>
 <p></br></br></br></p>
 <div id="ejemplo" class="section level3">
@@ -438,8 +438,8 @@ FINA_3</td>
 <td align="left">peso del árbol</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>diametro</strong></td>
-<td align="left">diametro del árbol</td>
+<td align="left"><strong>diámetro</strong></td>
+<td align="left">diámetro del árbol</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>altura</strong></td>
@@ -495,9 +495,9 @@ de uno y el valor de la estimación del peso sería:</p>
 <p>Indicando que <span
 class="math inline">\(\widehat{\beta}_{1}\)</span> corresponde al valor
 del peso estimado adicional (si el signo del coeficiente es positivo)
-por ser el árbol del genotipo 2, con respecto al gonotipo 1.</p>
+por ser el árbol del genotipo 2, con respecto al genotipo 1.</p>
 <p></br></p>
-<p>Para la variable finca con tres categorias, es necesario la creación
+<p>Para la variable finca con tres categorías, es necesario la creación
 de dos variables binarias, las cuales pueden ser generadas por R y en
 caso de tener una intensión especial la construcción de las variables
 será necesario realizarlas previamente a la estimación del modelo.</p>
@@ -580,8 +580,8 @@ FINCA1.</p>
 <p></br></p>
 <p>Si el árbol pertenece a la FINCA1, el valor de (<span
 class="math inline">\(D_1\)</span>, <span
-class="math inline">\(D_2\)</span>), será (0,0) y en el modelo presendo
-corresponderá a un peso promedio de <span
+class="math inline">\(D_2\)</span>), será (0,0) y en el modelo
+presentado corresponderá a un peso promedio de <span
 class="math inline">\(13.086\)</span></p>
 <p></br></br></p>
 <div id="nota-1" class="section level3 content-box-gray">

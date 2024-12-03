@@ -25,7 +25,7 @@ Antes de empezar revisemos el concepto de estimador y sus propiedades
 
 ## <span style="color:#034a94">**Estimador estadístico**</span>
 
-Es una función de los valores obtenidos en una muestra que se emplea para encontrar una aproximación a un parámetro población desconocido. Este proceso se puede realizarse de manera puntual o por intervalos de confianza. Los estimadores se represntan en general por  $\widehat{\theta}$ y su respectivo parámetro como $\theta$.   
+Es una función de los valores obtenidos en una muestra que se emplea para encontrar una aproximación a un parámetro población desconocido. Este proceso se puede realizarse de manera puntual o por intervalos de confianza. Los estimadores se representan en general por  $\widehat{\theta}$ y su respectivo parámetro como $\theta$.   
 
 <br/>
 
@@ -33,9 +33,9 @@ Ahora como los resultados obtenidos proceden de una muestra (la base de datos), 
 
 </br></br>
 
-## <span style="color:#034a94">**Propidedades de los estimadores**</span>
+## <span style="color:#034a94">**Propiedades de los estimadores**</span>
 
-Dentro de las princopales propiedades de los estimadores
+Dentro de las principales propiedades de los estimadores
 
 </br>
 
@@ -55,7 +55,7 @@ En este caso se puede demostrar que
 
 
 $$E[s²] = \dfrac{(n-1) \sigma²}{n}$$
-El termino que genera el sesgo es : $(n-1)/n$, el cual tiende a 1 cuando $n$ es grade, haciendo que el sesgo desaparesca
+El termino que genera el sesgo es : $(n-1)/n$, el cual tiende a 1 cuando $n$ es grade, haciendo que el sesgo desaparezca
 
 
 </br>

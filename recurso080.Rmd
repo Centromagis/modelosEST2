@@ -25,7 +25,7 @@ La multicolinealidad, un problema común en el análisis de regresión lineal m�
 
 </br>
 
-En este contexto, las variables predictoras a menudo están interrelacionadas  entre sí (no son independientes una de otroas), lo que puede generar dificultades al intentar determinar la contribución individual de cada variable en la explicación de la variable de respuesta. 
+En este contexto, las variables predictoras a menudo están interrelacionadas  entre sí (no son independientes una de otras), lo que puede generar dificultades al intentar determinar la contribución individual de cada variable en la explicación de la variable de respuesta. 
 
 </br>
 
@@ -37,7 +37,7 @@ Es posible que al construir un modelo de regresión para predecir el **precio de
 
 </br>
 
-Tambien es posible que si estamos analizando el **rendimiento académico** de los estudiantes utilizando variables como horas de estudio semanales, calificaciones en exámenes anteriores y participación en actividades extracurriculares. Si las horas de estudio y las calificaciones en exámenes anteriores están fuertemente correlacionadas, la multicolinealidad podría surgir. Esto podría dificultar la identificación de cuál de estas dos variables tiene un impacto más independiente en el rendimiento estudiantil.
+También es posible que si estamos analizando el **rendimiento académico** de los estudiantes utilizando variables como horas de estudio semanales, calificaciones en exámenes anteriores y participación en actividades extracurriculares. Si las horas de estudio y las calificaciones en exámenes anteriores están fuertemente correlacionadas, la multicolinealidad podría surgir. Esto podría dificultar la identificación de cuál de estas dos variables tiene un impacto más independiente en el rendimiento estudiantil.
 
 </br>
 

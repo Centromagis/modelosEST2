@@ -23,10 +23,10 @@ arboles1$altura = as.numeric(arboles1$altura)
 
 
 library(tidyverse)
-library(lmtest) # diagnosticos de modelos lineales
-library(sandwich) # errores estandar robustos
-library(ggeffects) # efectos y predicciones en modelos de regresion
-library(modelsummary) # tablas de regresion
+library(lmtest) # diagnósticos de modelos lineales
+library(sandwich) # errores estándar robustos
+library(ggeffects) # efectos y predicciones en modelos de regresión
+library(modelsummary) # tablas de regresión
 ```
 
 

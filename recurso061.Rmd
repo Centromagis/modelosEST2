@@ -19,9 +19,9 @@ data("arboles1")
 </br></br>
 
 
-Cuando se desea incluir variables categóricas al modelo de regresión lineal múltiple es necesario crear variables conocidas como ficticias, llamadas tambien binarias o dicotómicas.  Estas variables se redefinen a aprtir de las categorías de la variable cualitativa a ser incluida en el modelo y solo puede tomar dos valores : 0 ó  1. 
+Cuando se desea incluir variables categóricas al modelo de regresión lineal múltiple es necesario crear variables conocidas como ficticias, llamadas también binarias o dicotómicas.  Estas variables se re-definen a partir de las categorías de la variable cualitativa a ser incluida en el modelo y solo puede tomar dos valores : 0 ó  1. 
 
-En el caso de una variable categórica con $k$ categorías, es necesaria la construcción de $(k-1$ variables binarias
+En el caso de una variable categórica con $k$ categorías, es necesaria la construcción de $(k-1)$ variables binarias
 
 </br></br></br>
 
@@ -39,7 +39,7 @@ La base de datos arboles1 contiene las siguientes variables:
 | **finca**           | finca donde se ubica el árbol : FINCA_1, FINCA_2 y FINA_3     |
 | **mg**              | genotipo del árbol : GENOTIPO_1, GENOTIPO_2                   |  
 | **peso**            | peso del árbol                                                |
-| **diametro**        | diametro del árbol                                            |
+| **diámetro**        | diámetro del árbol                                            |
 | **altura**          | altura del árbol                                              |
 
 </br>
@@ -103,11 +103,11 @@ $$\widehat{\text{peso}}_{i} =  \widehat{\beta}_{1} + \widehat{\beta}_{1} (1)  = 
 
 </br>
 
-Indicando que $\widehat{\beta}_{1}$ corresponde al valor del peso estimado adicional (si el signo del coeficiente es positivo) por ser el árbol del genotipo 2, con respecto al gonotipo 1.
+Indicando que $\widehat{\beta}_{1}$ corresponde al valor del peso estimado adicional (si el signo del coeficiente es positivo) por ser el árbol del genotipo 2, con respecto al genotipo 1.
 
 </br>
 
-Para la variable finca con tres categorias, es necesario la creación de dos variables binarias, las cuales pueden ser generadas por R y en caso de tener una intensión especial la construcción de las variables será necesario realizarlas previamente a la estimación del modelo.
+Para la variable finca con tres categorías, es necesario la creación de dos variables binarias, las cuales pueden ser generadas por R y en caso de tener una intensión especial la construcción de las variables será necesario realizarlas previamente a la estimación del modelo.
 
 </br></br>
 
@@ -183,7 +183,7 @@ $D_{3} = 7.104$ se interpreta con el precio promedio adicional que tiene el árb
 
 </br>
 
-Si el árbol pertenece a la FINCA1, el valor de ($D_1$, $D_2$), será (0,0) y en el modelo presendo corresponderá a un peso promedio de $13.086$
+Si el árbol pertenece a la FINCA1, el valor de ($D_1$, $D_2$), será (0,0) y en el modelo presentado corresponderá a un peso promedio de $13.086$
 
 </br></br>
 

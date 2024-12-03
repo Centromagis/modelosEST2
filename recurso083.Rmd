@@ -22,10 +22,10 @@ arboles1$altura = as.numeric(arboles1$altura)
 
 
 # library(tidyverse)
-# library(lmtest) # diagnosticos de modelos lineales
-# library(sandwich) # errores estandar robustos
-# library(ggeffects) # efectos y predicciones en modelos de regresion
-# library(modelsummary) # tablas de regresion
+# library(lmtest) # diagnósticos de modelos lineales
+# library(sandwich) # errores estándar robustos
+# library(ggeffects) # efectos y predicciones en modelos de regresión
+# library(modelsummary) # tablas de regresión
 
 ```
 
@@ -117,6 +117,6 @@ $$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \ldots + \beta_px_p + \lambda \sum_{i=
 <div class="content-box-gray">
 ### <span style="color:#686868"> **Nota**</span>
 
-En esta unidad heremos enfasis en la fundamentación teórica y la selección de variables a través de sustentos teótricos y mediante metodología de paso a paso 
+En esta unidad haremos énfasis en la fundamentación teórica y la selección de variables a través de sustentos teóricos y mediante metodología de paso a paso 
 
 </div>

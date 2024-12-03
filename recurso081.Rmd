@@ -69,7 +69,7 @@ Si las variables predictoras se miden con errores de medición considerables, es
 <!-- #pairs(data3.1, lower.panel = myPanel.cor, diag.panel = myPanel.box, #upper.panel = panel.smooth, labels = names(data3.1)) -->
 <!-- ``` -->
 
-<!--  <!-- **Datos de tiempos de entrega** (*Fuente: Mongomery et al. (2002)*) --> 
+<!--  <!-- **Datos de tiempos de entrega** (*Fuente: Montgomery et al. (2002)*) --> 
 
 <!-- </br> -->
 
@@ -80,7 +80,7 @@ Si las variables predictoras se miden con errores de medición considerables, es
 <!-- <!-- ```{r, echo=FALSE, out.width="60%", fig.align = "center"} --> 
 <!-- <!-- knitr::include_graphics("img/diagrama1.png") --> 
 <!-- <!-- ``` --> 
-<!-- <!-- Fuente: Datos de consumo de electricidad - Mongomery et al. (2002) -->
+<!-- <!-- Fuente: Datos de consumo de electricidad - Montgomery et al. (2002) -->
 <!-- <!-- </center> --> 
 
 <!-- </br> -->

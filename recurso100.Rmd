@@ -92,15 +92,15 @@ summary(modelo1)
 ## <span style="color:#034a94">**Estimación paso a paso  o Steppwise**</span>
 
 
-Me diante esta metodología se estima un modelo de manera gradual, partiendo de un modelo con solo el intercepto y en cada paso se incorpora una variable hasta cumplir con el criterio de parada.
+Mediante esta metodología se estima un modelo de manera gradual, partiendo de un modelo con solo el intercepto y en cada paso se incorpora una variable hasta cumplir con el criterio de parada.
 
 </br>
 
 ```{r}
-# se define el modelo  ingenuo  y= b0
+# se define el modelo  nulo  y= b0
 modelo_b0<- lm(peso ~ 1, data=arboles1)
 
-#define model with all predictors
+# se define el modelo con todos los predictores
 modelo_all <- lm(peso ~ diametro + altura + D1 +D2 +D3, data=arboles1)
 
 # Se aplica el proceso forward stepwise regression
